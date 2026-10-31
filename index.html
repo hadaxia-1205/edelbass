@@ -8,15 +8,39 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="whats-up">
+  <a class="skip" href="#contenu">Aller au contenu</a>
   <div data-chrome></div>
-  <main class="wrap">
-    <p class="kicker">What's Up</p>
-    <h1>Prochaines soirées</h1>
-    <div data-upcoming></div>
+  <main id="contenu">
+    <div class="stage">
+      <div class="stage__copy">
+        <p class="kicker">What's Up</p>
+        <div data-upcoming></div>
+      </div>
+      <figure class="flower">
+        <img src="media/edelweiss.jpg" alt="Edelweiss lumineux, cyan et magenta, sur fond noir." width="800" height="1732">
+      </figure>
+    </div>
+    <div class="stage-follow" data-upcoming-rest></div>
+    <div class="wrap">
+      <section class="band" data-intro></section>
+      <section class="band">
+        <div class="band__head">
+          <h2><a href="past-events.html">Soirées passées</a></h2>
+        </div>
+        <ul class="poster-grid" data-past-preview></ul>
+      </section>
+      <section class="band">
+        <div class="band__head">
+          <h2><a href="merchandising.html">Merchandising</a></h2>
+        </div>
+        <div data-merch-preview></div>
+      </section>
+    </div>
   </main>
-  <footer class="site-footer wrap">
+  <footer class="site-footer">
     <p>Edelbass · Genève</p>
   </footer>
+  <noscript><p class="noscript">Activez JavaScript pour afficher les soirées.</p></noscript>
   <script src="js/content.js"></script>
   <script src="js/main.js"></script>
 </body>
