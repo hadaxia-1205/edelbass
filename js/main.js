@@ -500,14 +500,22 @@ function renderContact() {
   const instagram = safeUrl(EDELBASS.contact.instagram);
   if (instagram) {
     const label = EDELBASS.contact.instagramHandle || "Instagram";
-    items.push(
-      `<li><a href="${escapeHtml(instagram)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a></li>`
-    );
+    items.push(`
+      <li>
+        <p class="kicker">Instagram</p>
+        <a href="${escapeHtml(instagram)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>
+      </li>
+    `);
   }
   const email = safeUrl(EDELBASS.contact.email);
   if (email) {
     const label = String(EDELBASS.contact.email).replace(/^mailto:/i, "");
-    items.push(`<li><a href="${escapeHtml(email)}">${escapeHtml(label)}</a></li>`);
+    items.push(`
+      <li>
+        <p class="kicker">E-mail</p>
+        <a href="${escapeHtml(email)}">${escapeHtml(label)}</a>
+      </li>
+    `);
   }
   mount.innerHTML = items.length
     ? `<ul class="contact-list">${items.join("")}</ul>`

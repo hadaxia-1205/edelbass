@@ -12,7 +12,7 @@
    products     Catalogue, dix pièces au plus. Pas de paiement.
                 { name, price, image, variants }
                 Laisser [] : aucune pièce n’est fournie.
-   contact      E-mail vide : rien dans les fichiers du projet.
+   contact      Instagram et e-mail. Pas de formulaire.
    committee    Prénom, nom et rôle déjà écrits. Pas de photo fournie.
 */
 
@@ -23,7 +23,7 @@ const EDELBASS = {
   contact: {
     instagram: "https://www.instagram.com/edelbass.dnb/",
     instagramHandle: "@edelbass.dnb",
-    email: "",
+    email: "contact@edelbass.com",
   },
 
   upcoming: [
