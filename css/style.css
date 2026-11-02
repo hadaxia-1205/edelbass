@@ -19,12 +19,43 @@ html {
 }
 
 body {
+  position: relative;
+  z-index: 0;
   margin: 0;
-  background: var(--bg);
+  background: transparent;
   color: var(--text);
   font-family: "Avenir Next", Avenir, "Century Gothic", "Trebuchet MS", sans-serif;
   font-size: 1.05rem;
   line-height: 1.5;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+}
+
+body::before {
+  z-index: -2;
+  inset: -8%;
+  background: var(--bg) url("../media/edelweiss.jpg") center / cover no-repeat;
+  animation: edelweiss-drift 52s ease-in-out infinite alternate;
+}
+
+body::after {
+  z-index: -1;
+  inset: 0;
+  background: rgba(6, 7, 8, 0.78);
+}
+
+@keyframes edelweiss-drift {
+  from {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.1) translate3d(-1.6%, -2.2%, 0);
+  }
 }
 
 img {
@@ -256,23 +287,7 @@ p {
 }
 
 .stage {
-  display: grid;
-  gap: 1.25rem;
   padding-top: 1.2rem;
-}
-
-.flower {
-  margin: 0;
-}
-
-.flower img {
-  display: block;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 72svh;
-  margin-inline: auto;
-  object-fit: contain;
 }
 
 .next__date {
@@ -380,7 +395,16 @@ p {
   text-underline-offset: 0.18em;
 }
 
-.poster-grid,
+.poster-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.15rem 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .photo-grid,
 .product-grid {
   display: grid;
@@ -396,6 +420,10 @@ p {
   display: block;
   color: inherit;
   text-decoration: none;
+}
+
+.poster-link {
+  width: min(42vw, 8.25rem);
 }
 
 .poster-link img,
@@ -627,7 +655,10 @@ p {
 }
 
 @media (min-width: 700px) {
-  .poster-grid,
+  .poster-link {
+    width: 9.25rem;
+  }
+
   .photo-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -668,28 +699,18 @@ p {
 }
 
 @media (min-width: 960px) {
-  .stage {
-    grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.7fr);
-    align-items: center;
-    min-height: calc(100svh - 8rem);
-    padding-top: 0;
-  }
-
-  .flower img {
-    max-height: calc(100svh - 8.5rem);
-    margin-left: auto;
-  }
-
-  .poster-grid {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
   .product-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none;
+    inset: 0;
+    transform: none;
+  }
+
   .marquee__track {
     animation: none;
   }
